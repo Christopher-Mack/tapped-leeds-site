@@ -46,13 +46,21 @@ const featuredItem =
             {settings.businessName}
           </p>
 
-          <h1 className="text-6xl font-black leading-[0.95] md:text-8xl">
-            Beer.
-            <br />
-            Pizza.
-            <br />
-            Proper nights.
-          </h1>
+          <div className="flex items-center justify-between gap-8">
+  <h1 className="text-6xl font-black leading-[0.95] md:text-8xl">
+    Beer.
+    <br />
+    Pizza.
+    <br />
+    Proper nights.
+  </h1>
+
+  <img
+    src="/logo.png"
+    alt="Tapped Leeds"
+    className="hidden h-32 w-32 rounded-full border border-white/10 shadow-2xl lg:block"
+  />
+</div>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
             {settings.tagline}

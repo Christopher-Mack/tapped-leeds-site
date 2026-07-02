@@ -53,7 +53,26 @@ export default function Navbar() {
             : "border-white/10 bg-black/50 py-3"
         }`}
       >
-        <p className="font-black tracking-widest text-amber-400">TAPPED</p>
+        <Link
+  to="/"
+  className="flex items-center gap-3 transition hover:opacity-90"
+>
+  <img
+    src="/logo.png"
+    alt="Tapped Leeds"
+    className="h-11 w-11 rounded-full"
+  />
+
+  <div>
+    <p className="font-black tracking-[0.3em] text-amber-400">
+      TAPPED
+    </p>
+
+    <p className="text-xs uppercase tracking-[0.25em] text-zinc-400">
+      LEEDS
+    </p>
+  </div>
+</Link>
 
         <div className="hidden gap-8 text-sm text-zinc-300 md:flex">
           {links.map((link) => (
