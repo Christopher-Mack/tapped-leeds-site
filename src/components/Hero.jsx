@@ -36,7 +36,7 @@ const featuredItem =
 
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 xl:grid-cols-2">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -107,7 +107,7 @@ const featuredItem =
     opacity: { duration: 0.8 },
     x: { duration: 0.8, delay: 0.2 },
   }}
-  className="rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur transition duration-500 hover:-translate-y-3 hover:scale-[1.02]"
+  className="mx-auto w-full max-w-md rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur transition duration-500 hover:-translate-y-3 hover:scale-[1.02]"
 >
   <div
     className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-amber-500 via-orange-900 to-black"
