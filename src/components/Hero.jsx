@@ -36,7 +36,7 @@ const featuredItem =
 
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 xl:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
