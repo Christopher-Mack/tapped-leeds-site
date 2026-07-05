@@ -55,11 +55,13 @@ export default function Hero() {
             </h1>
 
             <div className="hidden rounded-full bg-white/50 p-4 shadow-2xl lg:block">
-              <img
-                src="/logo.png"
-                alt="Tapped Leeds"
-                className="h-32 w-32 rounded-full"
-              />
+              <div className="hidden items-center justify-center lg:flex">
+           <img
+            src="/logo.png"
+            alt="Tapped Leeds"
+            className="h-56 w-56 rounded-full object-contain opacity-50"
+          />
+          </div>
             </div>
           </div>
 
