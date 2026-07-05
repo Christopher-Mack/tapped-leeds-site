@@ -1,8 +1,8 @@
 import {
   Instagram,
-  Facebook,
   Mail,
   Beer,
+  Globe,
 } from "lucide-react";
 
 export default function Footer() {
@@ -15,7 +15,7 @@ export default function Footer() {
     {
       name: "Facebook",
       href: "https://www.facebook.com/TappedLeeds/",
-      icon: Facebook,
+      icon: Globe,
     },
     {
       name: "Untappd",
