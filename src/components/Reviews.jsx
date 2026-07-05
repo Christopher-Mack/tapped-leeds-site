@@ -12,28 +12,48 @@ export default function Reviews() {
       name: "Facebook reviewers",
       text: "92% recommend Tapped Leeds across more than 1,500 reviews.",
     },
+    {
+      name: "Google reviewer",
+      text: "Great selection of beers and a really relaxed city-centre atmosphere.",
+    },
+    {
+      name: "Google reviewer",
+      text: "Perfect spot for pizza, drinks and catching up with friends after work.",
+    },
+    {
+      name: "Google reviewer",
+      text: "Friendly staff, good drinks, and a proper Leeds pub feel.",
+    },
   ];
 
   return (
-    <section className="px-6 py-28 bg-[#0b0b0b]">
+    <section className="bg-[#0b0b0b] px-6 py-28">
       <div className="mx-auto max-w-7xl">
         <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
           Reviews
         </p>
 
-        <h2 className="mt-4 text-5xl font-black">
+        <h2 className="mt-4 text-5xl font-black md:text-7xl">
           Loved by the Leeds beer community.
         </h2>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <p className="mt-4 max-w-2xl text-zinc-400">
+          A city-centre favourite for craft beer, pizza and proper nights out.
+        </p>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {reviews.map((review) => (
             <div
               key={review.text}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition hover:-translate-y-2 hover:bg-white/[0.07]"
+              className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8"
             >
-              <p className="text-amber-400">★★★★★</p>
-              <p className="mt-6 leading-7 text-zinc-300">“{review.text}”</p>
-              <p className="mt-8 font-black">{review.name}</p>
+              <p className="text-lg font-black text-amber-400">★★★★★</p>
+
+              <p className="mt-6 leading-7 text-zinc-300">
+                “{review.text}”
+              </p>
+
+              <p className="mt-8 font-black text-white">{review.name}</p>
             </div>
           ))}
         </div>

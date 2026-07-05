@@ -11,11 +11,16 @@ const times = [
   { time: "20:00", available: false },
 ];
 
+function getToday() {
+  return new Date().toISOString().split("T")[0];
+}
+
 export default function Booking() {
   const [step, setStep] = useState(1);
   const [guests, setGuests] = useState(2);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(getToday());
   const [time, setTime] = useState("");
+  const [error, setError] = useState("");
   const [details, setDetails] = useState({
     name: "",
     email: "",
@@ -24,10 +29,30 @@ export default function Booking() {
   });
 
   function nextStep() {
+    setError("");
+
+    if (step === 2 && !date) {
+      setError("Please choose a date.");
+      return;
+    }
+
+    if (step === 3 && !time) {
+      setError("Please choose a time.");
+      return;
+    }
+
+    if (step === 4) {
+      if (!details.name || !details.email || !details.phone) {
+        setError("Please add your name, email and phone number.");
+        return;
+      }
+    }
+
     setStep((current) => Math.min(current + 1, 5));
   }
 
   function previousStep() {
+    setError("");
     setStep((current) => Math.max(current - 1, 1));
   }
 
@@ -46,6 +71,12 @@ export default function Booking() {
           <div className="mt-10 rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
             <Stepper currentStep={step} />
 
+            {error && (
+              <div className="mt-8 rounded-2xl border border-red-400/30 bg-red-400/10 p-4 font-bold text-red-300">
+                {error}
+              </div>
+            )}
+
             <div className="mt-10">
               {step === 1 && (
                 <div>
@@ -53,6 +84,7 @@ export default function Booking() {
 
                   <div className="mt-8 flex items-center gap-5">
                     <button
+                      type="button"
                       onClick={() => setGuests(Math.max(1, guests - 1))}
                       className="h-14 w-14 rounded-full border border-white/10 text-2xl hover:bg-white/10"
                     >
@@ -64,6 +96,7 @@ export default function Booking() {
                     </p>
 
                     <button
+                      type="button"
                       onClick={() => setGuests(guests + 1)}
                       className="h-14 w-14 rounded-full border border-white/10 text-2xl hover:bg-white/10"
                     >
@@ -80,6 +113,7 @@ export default function Booking() {
                   <input
                     type="date"
                     value={date}
+                    min={getToday()}
                     onChange={(event) => setDate(event.target.value)}
                     className="mt-8 w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-amber-400"
                   />
@@ -94,6 +128,7 @@ export default function Booking() {
                     {times.map((slot) => (
                       <button
                         key={slot.time}
+                        type="button"
                         disabled={!slot.available}
                         onClick={() => setTime(slot.time)}
                         className={`rounded-full px-5 py-3 font-bold transition ${
@@ -121,7 +156,7 @@ export default function Booking() {
 
                   <div className="mt-8 grid gap-4">
                     <input
-                      placeholder="Name"
+                      placeholder="Name *"
                       value={details.name}
                       onChange={(e) =>
                         setDetails({ ...details, name: e.target.value })
@@ -130,7 +165,8 @@ export default function Booking() {
                     />
 
                     <input
-                      placeholder="Email"
+                      placeholder="Email *"
+                      type="email"
                       value={details.email}
                       onChange={(e) =>
                         setDetails({ ...details, email: e.target.value })
@@ -139,7 +175,8 @@ export default function Booking() {
                     />
 
                     <input
-                      placeholder="Phone"
+                      placeholder="Phone *"
+                      type="tel"
                       value={details.phone}
                       onChange={(e) =>
                         setDetails({ ...details, phone: e.target.value })
@@ -167,8 +204,8 @@ export default function Booking() {
                   </h2>
 
                   <p className="mt-6 text-zinc-300">
-                    This is where the site would send the booking request or
-                    connect to a real booking system.
+                    Booking request ready for {date} at {time} for {guests}{" "}
+                    guests.
                   </p>
                 </div>
               )}
@@ -177,6 +214,7 @@ export default function Booking() {
             <div className="mt-10 flex justify-between gap-4">
               {step > 1 ? (
                 <button
+                  type="button"
                   onClick={previousStep}
                   className="rounded-full border border-white/10 px-6 py-3 font-bold hover:bg-white/10"
                 >
@@ -188,6 +226,7 @@ export default function Booking() {
 
               {step < 5 ? (
                 <button
+                  type="button"
                   onClick={nextStep}
                   className="rounded-full bg-amber-400 px-8 py-3 font-black text-black hover:bg-amber-300"
                 >
@@ -195,7 +234,20 @@ export default function Booking() {
                 </button>
               ) : (
                 <button
-                  onClick={() => setStep(1)}
+                  type="button"
+                  onClick={() => {
+                    setStep(1);
+                    setGuests(2);
+                    setDate(getToday());
+                    setTime("");
+                    setError("");
+                    setDetails({
+                      name: "",
+                      email: "",
+                      phone: "",
+                      notes: "",
+                    });
+                  }}
                   className="rounded-full bg-amber-400 px-8 py-3 font-black text-black hover:bg-amber-300"
                 >
                   Make Another Booking
@@ -212,6 +264,7 @@ export default function Booking() {
             <p>👥 Guests: {guests}</p>
             <p>📅 Date: {date || "Not selected"}</p>
             <p>🕒 Time: {time || "Not selected"}</p>
+            <p>👤 Name: {details.name || "Not added"}</p>
             <p>📍 51 Boar Lane, Leeds</p>
           </div>
         </aside>

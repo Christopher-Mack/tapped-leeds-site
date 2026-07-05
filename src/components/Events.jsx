@@ -17,18 +17,21 @@ export default function Events() {
             date="Thu"
             title="Tap Takeover"
             text="Guest breweries, new pours, and limited specials."
+            image="/gallery3.jpg"
           />
 
           <EventCard
             date="Fri"
             title="After Work Pints"
             text="City-centre drinks, pizza, and weekend-starting chaos."
+            image="/gallery4.jpg"
           />
 
           <EventCard
             date="Sun"
             title="Slow Sunday"
             text="Laid-back beers, comfort food, and end-of-week reset vibes."
+            image="/gallery6.jpg"
           />
         </div>
       </div>
