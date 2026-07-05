@@ -40,7 +40,14 @@ export default function Hero() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative"
         >
+          <img
+            src="/logo.png"
+            alt=""
+            className="pointer-events-none absolute -right-10 top-10 hidden h-72 w-72 opacity-20 mix-blend-screen lg:block"
+          />
+
           <p className="mb-5 text-sm font-bold uppercase tracking-[0.4em] text-amber-400">
             {settings.businessName}
           </p>
@@ -53,14 +60,6 @@ export default function Hero() {
               <br />
               Proper nights.
             </h1>
-
-            <div className="hidden lg:block">
-              <img
-                src="/logo.png"
-                alt="Tapped Leeds"
-                className="hidden h-56 w-56 object-contain opacity-50 lg:block"
-              />
-            </div>
           </div>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
