@@ -54,14 +54,12 @@ export default function Hero() {
               Proper nights.
             </h1>
 
-            <div className="hidden rounded-full bg-white/50 p-4 shadow-2xl lg:block">
-              <div className="hidden items-center justify-center lg:flex">
-           <img
-            src="/logo.png"
-            alt="Tapped Leeds"
-            className="h-56 w-56 rounded-full object-contain opacity-50"
-          />
-          </div>
+            <div className="hidden lg:block">
+              <img
+                src="/logo.png"
+                alt="Tapped Leeds"
+                className="hidden h-56 w-56 object-contain opacity-50 lg:block"
+              />
             </div>
           </div>
 
